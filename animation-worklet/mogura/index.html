@@ -1,0 +1,77 @@
+<!doctype html>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+
+<link rel="stylesheet" href="style.css">
+
+<div class="wrapper">
+  <div class="block1">
+    <img src="mogura.png" class="mogura">
+    <div class="box"></div>
+  </div>
+  <div class="block2">
+    <img src="mogura.png" class="mogura">
+    <div class="box"></div>
+  </div>
+  <div class="block3">
+    <img src="mogura.png" class="mogura">
+    <div class="box"></div>
+  </div>
+  <div class="block4">
+    <img src="mogura.png" class="mogura">
+    <div class="box"></div>
+  </div>
+  <div class="block5">
+    <img src="mogura.png" class="mogura">
+    <div class="box"></div>
+  </div>
+  <div class="block6">
+    <img src="mogura.png" class="mogura">
+    <div class="box"></div>
+  </div>
+  <div class="block7">
+    <img src="mogura.png" class="mogura">
+    <div class="box"></div>
+  </div>
+  <div class="block8">
+    <img src="mogura.png" class="mogura">
+    <div class="box"></div>
+  </div>
+  <div class="block9">
+    <img src="mogura.png" class="mogura">
+    <div class="box"></div>
+  </div>
+  <div class="block10">
+    <img src="mogura.png" class="mogura">
+    <div class="box"></div>
+  </div>
+  <div class="block11">
+    <img src="mogura.png" class="mogura">
+    <div class="box"></div>
+  </div>
+  <div class="block12">
+    <img src="mogura.png" class="mogura">
+    <div class="box"></div>
+  </div>
+</div>
+
+
+<script src="../anim-worklet.js"></script>
+<script>
+  window.animationWorkletPolyfill.addModule('mogura-animator.js');
+  document.addEventListener('DOMContentLoaded', function() {
+    const moguras = document.querySelectorAll('.mogura');
+    const effects = [];
+    const options = [];
+    const min = 1;
+    const max = 3;
+    moguras.forEach(function(mogura) {
+      const weight = Math.floor(Math.random() * (max + 1 - min)) + min;
+      options.push({weight: weight});
+      effects.push(new KeyframeEffect(mogura, [{'transform': 'translateY(0)'}, {'transform': 'translateY(-50px)'}], 100));
+    });
+    window.springAnimation = new WorkletAnimation('spring', effects, new DocumentTimeline(), options);
+    window.springAnimation.play();
+  });
+</script>
+

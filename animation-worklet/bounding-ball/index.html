@@ -1,0 +1,35 @@
+<!doctype html>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+
+<link rel="stylesheet" href="style.css">
+
+<div class="container">
+  <div class="ball"></div>
+  <div class="ball"></div>
+  <div class="ball"></div>
+  <div class="ball"></div>
+  <div class="ball"></div>
+  <div class="ball"></div>
+</div>
+
+<script src="../anim-worklet.js"></script>
+<script>
+  window.animationWorkletPolyfill.addModule('bounding-ball-animator.js');
+  document.addEventListener('DOMContentLoaded', function() {
+    const balls = document.querySelectorAll('.ball');
+    const effects = [];
+    const options = [];
+
+    balls.forEach( function(ball, i){
+      options.push({ g: 0.08, v: 0, k: 0.8, timeInterval: i * 1.2 });
+      effects.push(new KeyframeEffect(ball, [
+          {'transform': 'translateY(0)'},
+          {'transform': 'translateY(100px)'}
+      ], 100));
+    });
+    window.springAnimation = new WorkletAnimation('bounding', effects, new DocumentTimeline(), options);
+    window.springAnimation.play();
+  });
+
+</script>

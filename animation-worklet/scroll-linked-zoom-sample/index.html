@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div id="scroller">
+        <section class="tweets">
+        <p>Scrolling Area </p>
+        <p>Scrolling Area </p>
+        <p>Scrolling Area </p>
+        <p>Scrolling Area </p>
+        <p>Scrolling Area </p>
+        <p>Scrolling Area </p>
+        <p>Scrolling Area </p>
+        <p>Scrolling Area </p>
+        <p>Scrolling Area </p>
+        <p>Scrolling Area </p>
+        <p>Scrolling Area </p>
+        <p>Scrolling Area </p>
+        <p>Scrolling Area </p>
+        <p>Scrolling Area </p>
+        <p>Scrolling Area </p>
+      </section>
+    </div>
+    <div class="circle"></div>
+    <script src="../anim-worklet.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          const scroller = document.getElementById('scroller');
+          const circle = document.querySelector('.circle');
+	  const options = null;
+
+          window.scrollLinkedZoom = new WorkletAnimation('scroll-linked-zoom-sample', [
+            new KeyframeEffect(circle, [{'transform': 'translate(0, 0) scale(1)'}, {'transform': 'translate(-27px, 0) scale(0.4)'}], {duration: 144, fill: 'both'})],
+            new ScrollTimeline({scrollSource: scroller, orientation: 'vertical', endScrollOffset: '144px', timeRange: 144}), {},
+	    options
+          );
+          window.scrollLinkedZoom.play();
+        });
+        window.animationWorkletPolyfill.addModule('scroll-linked-zoom-sample.js');
+    </script>
+  </body>
+</html>

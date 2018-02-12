@@ -1,0 +1,25 @@
+body {
+  width:400px; 
+  padding:20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+#scroller {
+  width: 200px;
+  height: 300px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  border: 1px solid black;
+  position: relative;
+}
+
+.circle {
+   border-radius: 50%;
+   height: 90px;
+   width: 90px;
+   background-color:blue;
+}
+
+
+
